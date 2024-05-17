@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: ca49e2d4427d24cc4864a605154e6358
+labels:
+- Light
+- Road
+- Traffic
+- Cone
+- Lantern
+- Pillar
+- Barrier
+- Sign
+- Pole
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
