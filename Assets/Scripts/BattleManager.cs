@@ -40,6 +40,15 @@ public class BattleManager : MonoBehaviour
     {
         //Debug.Log("onPlayerHit");
         StopAllCoroutines();
+        var collectors = GameObject.FindObjectsOfType<PartCollector>();
+        foreach(var pc in collectors)
+        {
+            foreach(var go in pc.GetParts())
+            {
+                go.transform.parent = null;
+                go.GetComponent<Rigidbody>().isKinematic = false;
+            }
+        }
         StartCoroutine(endFlow());
     }
 
