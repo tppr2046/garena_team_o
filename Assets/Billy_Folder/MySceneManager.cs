@@ -46,18 +46,10 @@ public class MySceneManager : MonoBehaviour
     public void ToCraftScene()
     {
         sceneStep = SceneStep.CraftScene;
-        //把TetrisDemo加載
-        //SceneManager.LoadScene(sceneName[(int)sceneStep], LoadSceneMode.Additive);
-        //SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName[(int)sceneStep]));
-        //SceneManager.SetActiveScene(SceneManager.GetSceneByName("BaseScene"));
-        //SceneManager.LoadSceneAsync(sceneName[(int)sceneStep], LoadSceneMode.Additive);
-        //SceneManager.SetActiveScene(SceneManager.GetSceneByName("car_control"));
-        StartCoroutine(SetActive());
-
-
+        StartCoroutine(DoCraftScene());
         //CleanScen();
     }
-    public IEnumerator SetActive()
+    public IEnumerator DoCraftScene()
     {
         SceneManager.LoadScene(sceneName[(int)sceneStep], LoadSceneMode.Additive);
         var Game_scene = SceneManager.GetSceneByName(sceneName[(int)sceneStep]);
@@ -69,6 +61,30 @@ public class MySceneManager : MonoBehaviour
 
         SceneManager.SetActiveScene(Game_scene);
         SceneManager.UnloadSceneAsync(SceneManager.GetSceneByName("GameScene"));
+        canvasBase.SetActive(false);
+
+        yield break;
+
+    }
+    public void ToFightScene()
+    {
+        sceneStep = SceneStep.FightScene;
+        StartCoroutine(DoFightScene());
+
+    }
+    public IEnumerator DoFightScene()
+    {
+        SceneManager.LoadScene(sceneName[(int)sceneStep], LoadSceneMode.Additive);
+        var Game_scene = SceneManager.GetSceneByName(sceneName[(int)sceneStep]);
+
+        while (!Game_scene.isLoaded)
+        {
+            yield return null;
+        }
+
+        SceneManager.SetActiveScene(Game_scene);
+        SceneManager.UnloadSceneAsync(SceneManager.GetSceneByName("car_control"));
+        canvasBase.SetActive(false);
 
         yield break;
 
