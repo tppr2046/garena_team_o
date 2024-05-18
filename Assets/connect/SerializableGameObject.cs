@@ -16,3 +16,17 @@ public class SerializableGameObject
     }
 
 }
+
+public class SerializableGameObjectArray
+{
+    public SerializableGameObject[] serializableGameObjects;
+
+    public SerializableGameObjectArray(GameObject gameObject)
+    {
+        serializableGameObjects = new SerializableGameObject[gameObject.transform.childCount];
+        for (int i = 0; i < gameObject.transform.childCount; i++)
+        {
+            serializableGameObjects[i] = new SerializableGameObject(gameObject.transform.GetChild(i).gameObject);
+        }
+    }
+}
