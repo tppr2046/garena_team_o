@@ -18,18 +18,24 @@ public class MySceneManager : MonoBehaviour
         FightScene,
         ResultScene,
     }
-    readonly string[] sceneName = {"GameScene", "TetrisDemo", "PartEntryExitTest", "PartEntryExitTest" };
+    readonly string[] sceneName = {"GameScene", "car_control", "PartEntryExitTest", "PartEntryExitTest" };
     public SceneStep sceneStep;
     public Animator sceneFSM;
     public GameObject canvasBase;
     public static MySceneManager instance;
     public AudioSource mAudio;
+    public GameObject mm;
+    public Scene[] ss;
     private void Awake()
     {
         instance = this;
         DontDestroyOnLoad(this);
         DontDestroyOnLoad(canvasBase);
-        canvasBase.SetActive(false);
+        //canvasBase.SetActive(false);
+    }
+    private void Start()
+    {
+        //CreateModel();
     }
     public void SetScene(int sceneNum)
     {
@@ -41,8 +47,31 @@ public class MySceneManager : MonoBehaviour
     {
         sceneStep = SceneStep.CraftScene;
         //把TetrisDemo加載
+        //SceneManager.LoadScene(sceneName[(int)sceneStep], LoadSceneMode.Additive);
+        //SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName[(int)sceneStep]));
+        //SceneManager.SetActiveScene(SceneManager.GetSceneByName("BaseScene"));
+        //SceneManager.LoadSceneAsync(sceneName[(int)sceneStep], LoadSceneMode.Additive);
+        //SceneManager.SetActiveScene(SceneManager.GetSceneByName("car_control"));
+        StartCoroutine(SetActive());
+
+
+        //CleanScen();
+    }
+    public IEnumerator SetActive()
+    {
         SceneManager.LoadScene(sceneName[(int)sceneStep], LoadSceneMode.Additive);
-        CleanScen();
+        var Game_scene = SceneManager.GetSceneByName(sceneName[(int)sceneStep]);
+
+        while (!Game_scene.isLoaded)
+        {
+            yield return null;
+        }
+
+        SceneManager.SetActiveScene(Game_scene);
+        SceneManager.UnloadSceneAsync(SceneManager.GetSceneByName("GameScene"));
+
+        yield break;
+
     }
 
     public void EnterScene()
@@ -51,7 +80,7 @@ public class MySceneManager : MonoBehaviour
     }
     public void StayScene()
     {
-
+        
     }
     public void ExitScene()
     {
@@ -63,6 +92,10 @@ public class MySceneManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             canvasBase.SetActive(!canvasBase.activeSelf);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            CreateModel();
         }
     }
     public void playAudio(string audioName)
@@ -77,5 +110,36 @@ public class MySceneManager : MonoBehaviour
             SceneManager.UnloadSceneAsync(SceneManager.GetSceneAt(i));
         }
     }
+
+    #region 模型檔名
+    public void CreateModel()
+    {
+        //var obj = Instantiate(Resources.Load(ModelName[0]) as GameObject);
+        Instantiate(Resources.Load($"3DModel/{ModelName[Random.Range(0,ModelName.Length)]}"));
+    }
+    private readonly string[] ModelName = new string[] {
+        "2ac71a665dc6_fried_chicken__3d_a",
+        "0d24902d7ab2_monopoly_board_game",
+        "fdc084038d2c_Taiwan__3d_asset_0_",
+        "f9702fff9384_gun__3d_asset_0_glb",
+        "99932562e022_warriar_Confucius__",
+        "a0a6f50c88c3_PBR_wooden_log_benc",
+        "88f238c656ee_Magic_Car__3d_asset",
+        "f5057f913162_DnD_D20_dice__3d_as",
+        "78d2efe1fee2_Buddha_says__life_i",
+        "daf74742b72d_Confucius_in_skippi",
+        "ec4597bf60c2_monopoly_board_game",
+        "fb51ae56e7e9_a_mythical_battle_a",
+        "cdfce05ea695_DnD_D20_dice__3d_as",
+        "a9820209ff3a_DnD_D20_dice__3d_as",
+        "3fcdf48ef103_Hawai_i__Pizza__3d_",
+        "5148c9aae9c5_iPhone__3d_asset_0_",
+        "2669d99ed6ce_Nitendo_N64__3d_ass",
+        "eec3f4a482be_Orange__3d_asset_0_",
+        "fda175092db4_Guan_Yu_riding_a_mo",
+        "318a74c4cb04_Garena_Game_Jam__3d"
+    };
+
+    #endregion
 
 }
