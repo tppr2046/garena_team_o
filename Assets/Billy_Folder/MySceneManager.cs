@@ -17,6 +17,7 @@ public class MySceneManager : MonoBehaviour
         FightScene,
         ResultScene,
     }
+    readonly string[] sceneName = {"GameScene","Tetris","PartEntryExitTest", "PartEntryExitTest" };
     public SceneStep sceneStep;
     public Animator sceneFSM;
     public GameObject canvasBase;
