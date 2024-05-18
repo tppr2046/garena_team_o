@@ -24,8 +24,7 @@ public class MySceneManager : MonoBehaviour
     public GameObject canvasBase;
     public static MySceneManager instance;
     public AudioSource mAudio;
-    public GameObject mm;
-    public Scene[] ss;
+    public BattleManager battleManager;
     private void Awake()
     {
         instance = this;
@@ -63,13 +62,18 @@ public class MySceneManager : MonoBehaviour
         SceneManager.UnloadSceneAsync(SceneManager.GetSceneByName("GameScene"));
         canvasBase.SetActive(false);
 
+        //初始化
+        battleManager = GetComponent<BattleManager>();
+
         yield break;
 
     }
     public void ToFightScene()
     {
         sceneStep = SceneStep.FightScene;
-        StartCoroutine(DoFightScene());
+        battleManager.Run();
+        //StartCoroutine(DoFightScene());
+
 
     }
     public IEnumerator DoFightScene()

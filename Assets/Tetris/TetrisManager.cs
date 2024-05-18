@@ -23,6 +23,7 @@ public class TetrisManager : MonoBehaviour
     float stopwatchTime;
     public Text stopwatchDisplay;
     // Start is called before the first frame update
+    public CrashEvent crashEvent;
     void Start()
     {
         InvokeRepeating("TetrisInstantiate",0, tertrisTime);
@@ -60,8 +61,11 @@ public class TetrisManager : MonoBehaviour
         UpdateStopwatchDisplay();
         if (stopwatchTime >= timeLimit)
         {
+
             CancelInvoke("TetrisInstantiate");
             Debug.Log("時間到");
+            crashEvent.CRASH();//打開牆壁
+            MySceneManager.instance.ToFightScene();
         }
     }
     void UpdateStopwatchDisplay()
