@@ -26,7 +26,7 @@ public class Settlement : MonoBehaviour
         }
         else
         {
-            result = "P2¿Ú≥”!";
+            result = "•≠§‚";
         }
         resultTxt.text = result;
         gameObject.SetActive(true);
