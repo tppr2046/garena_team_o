@@ -9,6 +9,13 @@ public class Settlement : MonoBehaviour
     [SerializeField] PartCollector p2;
     [SerializeField] TextMeshProUGUI resultTxt;
 
+    public void Run(PartCollector p1, PartCollector p2)
+    {
+        this.p1 = p1;
+        this.p2 = p2;
+        Run();
+    }
+
     public void Run()
     {
         var count1 = p1.GetParts().Count;
