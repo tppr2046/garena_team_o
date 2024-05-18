@@ -17,6 +17,7 @@ public class PartCollector : MonoBehaviour
         {
             parts.Add(other.gameObject);
             AddPartEvent?.Invoke(other.gameObject);
+            other.transform.SetParent(transform);
         }
     }
 
