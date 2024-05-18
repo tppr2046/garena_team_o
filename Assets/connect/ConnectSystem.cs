@@ -17,11 +17,11 @@ public class ConnectSystem : MonoBehaviour
     // 要儲存的物件
     public GameObject gameObject;
 
-    public string Upload(GameObject gameObject)
+    public async Task<string> Upload(GameObject gameObject)
     {
         Debug.Log("Upload GameObject");
         string str = serializeGameObject(gameObject);
-        return sendDataToServer(str);
+        return await sendDataToServer(str);
     }
 
     private string serializeGameObject(GameObject gameObject)
