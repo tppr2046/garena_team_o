@@ -18,8 +18,18 @@ public class MySceneManager : MonoBehaviour
         FightScene,
         ResultScene,
     }
+    public enum State
+    {
+        IDLE,
+        START,
+        WORK,
+        EXIT,
+    }
+
     readonly string[] sceneName = { "car_control", "car_control", "car_control", "car_control" };
+
     public SceneStep sceneStep;
+    public Dictionary<SceneStep, State> GameState = new Dictionary<SceneStep, State>();
     public Animator sceneFSM;
     public GameObject canvasBase;
     public static MySceneManager instance;
@@ -30,8 +40,8 @@ public class MySceneManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        DontDestroyOnLoad(this);
-        DontDestroyOnLoad(canvasBase);
+        //DontDestroyOnLoad(this);
+        //DontDestroyOnLoad(canvasBase);
         //canvasBase.SetActive(false);
     }
     private void Start()
