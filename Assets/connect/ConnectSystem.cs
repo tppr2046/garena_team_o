@@ -28,7 +28,6 @@ public class ConnectSystem : MonoBehaviour
     {
         SerializableGameObjectArray serializableGameObjectArray = new SerializableGameObjectArray(gameObject);
         string str = JsonUtility.ToJson(serializableGameObjectArray);
-        Debug.Log("serializeGameObject str:" + str);
         return str;
     }
 
@@ -54,28 +53,28 @@ public class ConnectSystem : MonoBehaviour
         }
     }
 
-    public async Task<SerializableGameObjectArray> Download()
+    public async Task<SerializableGameObjectArray> Download(string ID)
     {
         Debug.Log("Download GameObject");
         // 從 server 端取得資料
-        string response = await getDataFromServer();
+        string response = await getDataFromServer(ID);
         // 將資料轉換成物件並回傳
         return JsonUtility.FromJson<SerializableGameObjectArray>(response);
     }
 
     // 從 server 端取得資料
-    private async Task<string> getDataFromServer()
+    private async Task<string> getDataFromServer(string ID)
     {
         try
         {
-            // 發送 GET 請求
-            HttpResponseMessage response = await client.GetAsync(url_download);
+            // 發送 GET 請求(url 後面帶上 ID)
+            HttpResponseMessage response = await client.GetAsync(url_download + "?" + ID);
             // 確認是否成功
             response.EnsureSuccessStatusCode();
             // 讀取回應內容
             string responseBody = await response.Content.ReadAsStringAsync();
             Debug.Log("getDataFromServer responseBody:" + responseBody);
-            // 回傳回應內容
+            // 回傳回應內容(附帶此次回傳的 ID)
             return responseBody;
         }
         catch (HttpRequestException e)
