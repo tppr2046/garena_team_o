@@ -1,0 +1,14 @@
+Font: Microsoft JhengHei  Style: Regular
+Point Size: 51   SP/PD Ratio: 9.8%
+
+Characters included: 5117/5118
+Missing characters: 1
+Excluded characters: 0
+
+Characters missing from font file:
+----------------------------------------
+ID: 10	Hex: A	Char [
+]
+
+Characters excluded from packing:
+----------------------------------------
