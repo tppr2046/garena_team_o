@@ -23,6 +23,7 @@ public class MySceneManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        DontDestroyOnLoad(this);
     }
     public void SetScene(int sceneNum)
     {
