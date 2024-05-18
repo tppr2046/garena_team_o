@@ -7,6 +7,11 @@ public class BattleManager : MonoBehaviour
     [SerializeField] private List<Rigidbody> players = new();
     [SerializeField] private List<Transform> startPoints = new();
 
+    private void Start()
+    {
+        FindObjectOfType<PlayerHitChecker>().HitPlayerEvent += onPlayerHit;
+    }
+
     public void Run()
     {
         for (int i = 0; i < players.Count ; i++)
@@ -30,5 +35,22 @@ public class BattleManager : MonoBehaviour
             players[0].AddForce(-vector);
             yield return null;
         } while (true);
+    }
+
+    private void onPlayerHit()
+    {
+        //Debug.Log("onPlayerHit");
+        StopAllCoroutines();
+        StartCoroutine(endFlow());
+    }
+
+    private IEnumerator endFlow()
+    {
+        do
+        {
+            yield return null;
+        }while (players[0].velocity.magnitude > .1f);
+        //Debug.Log("End");
+        //TODO Settlement
     }
 }
