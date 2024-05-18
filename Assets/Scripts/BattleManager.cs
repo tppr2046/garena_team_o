@@ -10,11 +10,6 @@ public class BattleManager : MonoBehaviour
     [SerializeField] private List<Rigidbody> players = new();
     [SerializeField] private List<Transform> startPoints = new();
 
-    private void Start()
-    {
-        FindObjectOfType<PlayerHitChecker>().HitPlayerEvent += onPlayerHit;
-    }
-
     public void Run()
     {
         for (int i = 0; i < players.Count ; i++)
@@ -22,6 +17,7 @@ public class BattleManager : MonoBehaviour
             players[i].transform.position = startPoints[i].position;
         }
 
+        FindObjectOfType<PlayerHitChecker>().HitPlayerEvent += onPlayerHit;
         StartCoroutine(run());
     }
 

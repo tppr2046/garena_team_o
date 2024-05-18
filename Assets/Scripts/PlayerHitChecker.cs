@@ -14,4 +14,12 @@ public class PlayerHitChecker : MonoBehaviour
             HitPlayerEvent?.Invoke();
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag.Equals(Tags.Player))
+        {
+            HitPlayerEvent?.Invoke();
+        }
+    }
 }
