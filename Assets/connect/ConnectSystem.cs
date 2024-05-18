@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 public class ConnectSystem : MonoBehaviour
 {
+    public static ConnectSystem instance = new ConnectSystem();
     // http 連線物件
     private HttpClient client = new HttpClient();
     // 連線網址(儲存)
@@ -14,15 +15,10 @@ public class ConnectSystem : MonoBehaviour
     // 連線網址(讀取)
     private readonly string url_load = "http://127.0.0.1:3000/load";
 
-    public GameObject prefabToSerialize;
-
-    async void Start()
+    public void Save(GameObject gameObject)
     {
-        string str = SerializeGameObject(prefabToSerialize);
-        Debug.Log("send" + str);
-        await SendDataToServer(str);
-        string response = await GetDataFromServer();
-        Debug.Log("response" + response);
+        string str = SerializeGameObject(gameObject);
+        SendDataToServer(str);
     }
 
     private string SerializeGameObject(GameObject gameObject)
@@ -30,6 +26,7 @@ public class ConnectSystem : MonoBehaviour
         SerializableGameObject serializableGameObject = new SerializableGameObject(gameObject);
         return JsonUtility.ToJson(serializableGameObject);
     }
+
 
     private async Task<string> SendDataToServer(string data)
     {
@@ -49,6 +46,14 @@ public class ConnectSystem : MonoBehaviour
             Debug.LogError($"Request failed: {e.Message}");
             return null;
         }
+    }
+
+    public async Task<SerializableGameObject> load()
+    {
+        string response = await GetDataFromServer();
+        Debug.Log("response" + response);
+        SerializableGameObject serializableGameObject = JsonUtility.FromJson<SerializableGameObject>(response);
+        return serializableGameObject;
     }
 
     // 從 server 端取得資料
