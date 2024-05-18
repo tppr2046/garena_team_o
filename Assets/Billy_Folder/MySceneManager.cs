@@ -22,6 +22,7 @@ public class MySceneManager : MonoBehaviour
     public Animator sceneFSM;
     public GameObject canvasBase;
     public static MySceneManager instance;
+    public AudioSource audio;
     private void Awake()
     {
         instance = this;
@@ -54,6 +55,11 @@ public class MySceneManager : MonoBehaviour
         {
             canvasBase.SetActive(!canvasBase.activeSelf);
         }
+    }
+    public void playAudio(string audioName)
+    {
+        audio.PlayOneShot(Resources.Load<AudioClip>(audioName));
+
     }
 
 }
