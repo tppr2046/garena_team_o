@@ -1,9 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class BattleManager : MonoBehaviour
 {
+    public event Action EndEvent;
+
     [SerializeField] private List<Rigidbody> players = new();
     [SerializeField] private List<Transform> startPoints = new();
 
@@ -51,6 +54,6 @@ public class BattleManager : MonoBehaviour
             yield return null;
         }while (players[0].velocity.magnitude > .1f);
         //Debug.Log("End");
-        //TODO Settlement
+        EndEvent?.Invoke();
     }
 }
