@@ -18,7 +18,7 @@ public class MySceneManager : MonoBehaviour
         FightScene,
         ResultScene,
     }
-    readonly string[] sceneName = {"GameScene", "car_control", "PartEntryExitTest", "PartEntryExitTest" };
+    readonly string[] sceneName = { "car_control", "car_control", "car_control", "car_control" };
     public SceneStep sceneStep;
     public Animator sceneFSM;
     public GameObject canvasBase;
@@ -26,6 +26,7 @@ public class MySceneManager : MonoBehaviour
     public AudioSource mAudio;
     public BattleManager battleManager;
     public Settlement resultScript;
+    public GameObject everySystem;
     private void Awake()
     {
         instance = this;
