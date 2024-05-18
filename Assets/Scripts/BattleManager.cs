@@ -5,14 +5,17 @@ using UnityEngine;
 
 public class BattleManager : MonoBehaviour
 {
-    public event Action EndEvent;
+    public event Action<PartCollector, PartCollector> EndEvent;
 
     [SerializeField] private List<Rigidbody> players = new();
     [SerializeField] private List<Transform> startPoints = new();
     [SerializeField] private float speed = 5;
+    public List<PartCollector> getPartCollector = new List<PartCollector>();
 
     public void Run()
     {
+
+        EndEvent += MySceneManager.instance.ToResultScene;
         for (int i = 0; i < players.Count ; i++)
         {
             players[i].transform.position = startPoints[i].position;
@@ -72,6 +75,8 @@ public class BattleManager : MonoBehaviour
             yield return null;
         }while (stopTime < 1f);
         //Debug.Log("End");
-        EndEvent?.Invoke();
+        EndEvent?.Invoke(players[0].GetComponentInChildren<PartCollector>(), players[1].GetComponentInChildren<PartCollector>());
     }
+    
+
 }

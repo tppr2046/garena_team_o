@@ -25,6 +25,7 @@ public class MySceneManager : MonoBehaviour
     public static MySceneManager instance;
     public AudioSource mAudio;
     public BattleManager battleManager;
+    public Settlement resultScript;
     private void Awake()
     {
         instance = this;
@@ -46,6 +47,7 @@ public class MySceneManager : MonoBehaviour
     {
         sceneStep = SceneStep.CraftScene;
         StartCoroutine(DoCraftScene());
+
         //CleanScen();
     }
     public IEnumerator DoCraftScene()
@@ -72,10 +74,15 @@ public class MySceneManager : MonoBehaviour
     {
         sceneStep = SceneStep.FightScene;
         battleManager.Run();
+        
         //StartCoroutine(DoFightScene());
-
-
     }
+    public void ToResultScene(PartCollector part1, PartCollector part2)
+    {
+        sceneStep = SceneStep.ResultScene;
+        resultScript.Run(part1, part2);
+    }
+
     public IEnumerator DoFightScene()
     {
         SceneManager.LoadScene(sceneName[(int)sceneStep], LoadSceneMode.Additive);

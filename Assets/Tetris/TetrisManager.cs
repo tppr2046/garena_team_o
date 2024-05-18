@@ -20,6 +20,8 @@ public class TetrisManager : MonoBehaviour
     public List<GameObject> tetrisList;
     [Header("Stopwatch")]
     public float timeLimit;
+    [SerializeField]
+    TextObject[] textObjs;
     float stopwatchTime;
     public Text stopwatchDisplay;
     // Start is called before the first frame update
@@ -61,11 +63,15 @@ public class TetrisManager : MonoBehaviour
         UpdateStopwatchDisplay();
         if (stopwatchTime >= timeLimit)
         {
-
+            for (int i = 0; i < textObjs.Length; i++)
+            {
+                textObjs[i].enabled = false;
+            }
             CancelInvoke("TetrisInstantiate");
             Debug.Log("時間到");
             crashEvent.CRASH();//打開牆壁
             MySceneManager.instance.ToFightScene();
+            this.GetComponent<TetrisManager>().enabled = false;
         }
     }
     void UpdateStopwatchDisplay()
