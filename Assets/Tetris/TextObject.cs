@@ -5,15 +5,15 @@ using UnityEngine;
 public class TextObject : MonoBehaviour
 {
     
-    public string targetTag = "TextObject";
+    public string targetTag = "Part";
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag== targetTag)
         {
-            Debug.Log(other);
-            transform.SetParent(other.transform);
-            
+            Debug.Log("other");
+            other.transform.SetParent(transform);
+            other.GetComponent<Rigidbody>().isKinematic = true;
         }
     }
     private void OnCollisionEnter(Collision collision)
