@@ -19,11 +19,14 @@ public class MySceneManager : MonoBehaviour
     }
     public SceneStep sceneStep;
     public Animator sceneFSM;
+    public GameObject canvasBase;
     public static MySceneManager instance;
     private void Awake()
     {
         instance = this;
         DontDestroyOnLoad(this);
+        DontDestroyOnLoad(canvasBase);
+        canvasBase.SetActive(false);
     }
     public void SetScene(int sceneNum)
     {
@@ -43,6 +46,13 @@ public class MySceneManager : MonoBehaviour
     {
 
         Debug.Log("離開場景");
+    }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            canvasBase.SetActive(!canvasBase.activeSelf);
+        }
     }
 
 }
