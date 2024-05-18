@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TetrisManager : MonoBehaviour
 {
@@ -17,6 +18,10 @@ public class TetrisManager : MonoBehaviour
     [SerializeField]
     float tertrisTime;
     public List<GameObject> tetrisList;
+    [Header("Stopwatch")]
+    public float timeLimit;
+    float stopwatchTime;
+    public Text stopwatchDisplay;
     // Start is called before the first frame update
     void Start()
     {
@@ -47,6 +52,23 @@ public class TetrisManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        UpdateStopwatch();
+    }
+    void UpdateStopwatch()
+    {
+        stopwatchTime += Time.deltaTime;
+        UpdateStopwatchDisplay();
+        if (stopwatchTime >= timeLimit)
+        {
+            CancelInvoke("TetrisInstantiate");
+            Debug.Log("®É¶¡¨ì");
+        }
+    }
+    void UpdateStopwatchDisplay()
+    {
+        //int minutes = Mathf.FloorToInt(stopwatchTime / 60);
+        //int seconds = Mathf.FloorToInt(stopwatchTime % 60);
+        float seconds = timeLimit - stopwatchTime;
+        stopwatchDisplay.text = string.Format("{0:00}", seconds);//"{0:00}:{1:00}", minutes,
     }
 }
