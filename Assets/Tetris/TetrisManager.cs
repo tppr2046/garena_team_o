@@ -26,10 +26,16 @@ public class TetrisManager : MonoBehaviour
     public Text stopwatchDisplay;
     // Start is called before the first frame update
     public CrashEvent crashEvent;
-    void Start()
+    bool isTimeUp = false;
+    private void OnEnable()
     {
-        InvokeRepeating("TetrisInstantiate",0, tertrisTime);
+        InvokeRepeating("TetrisInstantiate", 0, tertrisTime);
     }
+    
+    //void Start()
+    //{
+    //    InvokeRepeating("TetrisInstantiate",0, tertrisTime);
+    //}
     void TetrisInstantiate()
     {
         float playeronePosX=Random.Range(Xmin, Xmax);
@@ -61,17 +67,16 @@ public class TetrisManager : MonoBehaviour
     {
         stopwatchTime += Time.deltaTime;
         UpdateStopwatchDisplay();
-        if (stopwatchTime >= timeLimit)
+        if (stopwatchTime >= timeLimit && !isTimeUp)
         {
+            isTimeUp = true;
             for (int i = 0; i < textObjs.Length; i++)
             {
                 textObjs[i].enabled = false;
             }
             CancelInvoke("TetrisInstantiate");
             Debug.Log("時間到");
-            crashEvent.CRASH();//打開牆壁
             MySceneManager.instance.ToFightScene();
-            this.GetComponent<TetrisManager>().enabled = false;
         }
     }
     void UpdateStopwatchDisplay()

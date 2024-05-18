@@ -13,10 +13,11 @@ public class MySceneManager : MonoBehaviour
 
     public enum SceneStep 
     { 
-        MenuScene,
-        CraftScene,
-        FightScene,
-        ResultScene,
+        MENU,
+        CRAFT,
+        FIGHT,
+        RESULT,
+        count,
     }
     public enum State
     {
@@ -28,155 +29,130 @@ public class MySceneManager : MonoBehaviour
 
     readonly string[] sceneName = { "car_control", "car_control", "car_control", "car_control" };
 
-    public SceneStep sceneStep;
-    public Dictionary<SceneStep, State> GameState = new Dictionary<SceneStep, State>();
+    public SceneStep sceneStep;//當前階段
+    public Dictionary<int, State> GameState = new Dictionary<int, State>();//每個階段的狀態
     public Animator sceneFSM;
-    public GameObject canvasBase;
-    public static MySceneManager instance;
-    public AudioSource mAudio;
-    public BattleManager battleManager;
-    public Settlement resultScript;
-    public GameObject everySystem;
+    //public GameObject canvasBase;//UI的集合
+    public GameObject[] UIPanels;
+    public static MySceneManager instance;//單例
+    public AudioSource mAudio;//可使用的Audio
+    public TetrisManager tetrisManager;//CraftStep的控制腳本
+    public BattleManager battleManager;//FightStep的控制腳本
+    public Settlement resultScript;//ResultStep的控制腳本
+    
     private void Awake()
     {
         instance = this;
-        //DontDestroyOnLoad(this);
-        //DontDestroyOnLoad(canvasBase);
-        //canvasBase.SetActive(false);
+        for (int i = 0; i < (int)SceneStep.count; i++)//初始化所有狀態
+        {
+            GameState.Add(i, State.IDLE);
+        }
+        tetrisManager.enabled = false;
     }
     private void Start()
     {
         //CreateModel();
     }
-    public void SetScene(int sceneNum)
+    public void SetSceneStep(int sceneNum)
     {
         sceneStep = (SceneStep)sceneNum;
         sceneFSM.SetTrigger(sceneStep.ToString());
         //EnterScene();
     }
-    public void ToCraftScene()
+    public void ToMenuScene()
     {
-        sceneStep = SceneStep.CraftScene;
-        StartCoroutine(DoCraftScene());
-
-        //CleanScen();
+        setUIPanel(0);
     }
-    public IEnumerator DoCraftScene()
+    public void ToCraftScene()//設置在MenuScene的Button上
     {
-        SceneManager.LoadScene(sceneName[(int)sceneStep], LoadSceneMode.Additive);
-        var Game_scene = SceneManager.GetSceneByName(sceneName[(int)sceneStep]);
-
-        while (!Game_scene.isLoaded)
-        {
-            yield return null;
-        }
-
-        SceneManager.SetActiveScene(Game_scene);
-        SceneManager.UnloadSceneAsync(SceneManager.GetSceneByName("GameScene"));
-        canvasBase.SetActive(false);
-
-        //初始化
-        battleManager = GetComponent<BattleManager>();
-
-        yield break;
-
+        setUIPanel(1);
+        sceneStep = SceneStep.CRAFT;
+        tetrisManager.enabled = true;
     }
-    public void ToFightScene()
+
+    public void ToFightScene()//設置在TetrisManager，時間到的時候
     {
-        sceneStep = SceneStep.FightScene;
+        setUIPanel();
+        sceneStep = SceneStep.FIGHT;
+        tetrisManager.enabled = false;
+        tetrisManager.crashEvent.CRASH();//打開牆壁
         battleManager.Run();
-        
         //StartCoroutine(DoFightScene());
     }
     public void ToResultScene(PartCollector part1, PartCollector part2)
     {
-        sceneStep = SceneStep.ResultScene;
+        setUIPanel(2);
+        sceneStep = SceneStep.RESULT;
         resultScript.Run(part1, part2);
     }
-
-    public IEnumerator DoFightScene()
+    void setUIPanel(int num = -1)
     {
-        SceneManager.LoadScene(sceneName[(int)sceneStep], LoadSceneMode.Additive);
-        var Game_scene = SceneManager.GetSceneByName(sceneName[(int)sceneStep]);
-
-        while (!Game_scene.isLoaded)
+        for (int i = 0; i < UIPanels.Length; i++)
         {
-            yield return null;
+            UIPanels[i].SetActive(false);
         }
-
-        SceneManager.SetActiveScene(Game_scene);
-        SceneManager.UnloadSceneAsync(SceneManager.GetSceneByName("car_control"));
-        canvasBase.SetActive(false);
-
-        yield break;
-
+        if (num > -1)
+        {
+            UIPanels[num].SetActive(true);
+        }
     }
-
-    public void EnterScene()
+    public void EnterStep()
     {
         Debug.Log("進入場景");
     }
-    public void StayScene()
+    public void StayStep()
     {
         
     }
-    public void ExitScene()
+    public void ExitStep()
     {
 
         Debug.Log("離開場景");
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            canvasBase.SetActive(!canvasBase.activeSelf);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            CreateModel();
-        }
+        //if (Input.GetKeyDown(KeyCode.Alpha1))
+        //{
+        //    canvasBase.SetActive(!canvasBase.activeSelf);
+        //}
+        //if (Input.GetKeyDown(KeyCode.Alpha2))
+        //{
+        //    CreateModel();
+        //}
     }
     public void playAudio(string audioName)
     {
         mAudio.PlayOneShot(Resources.Load<AudioClip>(audioName));
-
-    }
-    void CleanScen()
-    {
-        for (int i = 0; i < SceneManager.sceneCount; i++)
-        {
-            SceneManager.UnloadSceneAsync(SceneManager.GetSceneAt(i));
-        }
     }
 
     #region 模型檔名
-    public void CreateModel()
-    {
-        //var obj = Instantiate(Resources.Load(ModelName[0]) as GameObject);
-        Instantiate(Resources.Load($"3DModel/{ModelName[Random.Range(0,ModelName.Length)]}"));
-    }
-    private readonly string[] ModelName = new string[] {
-        "2ac71a665dc6_fried_chicken__3d_a",
-        "0d24902d7ab2_monopoly_board_game",
-        "fdc084038d2c_Taiwan__3d_asset_0_",
-        "f9702fff9384_gun__3d_asset_0_glb",
-        "99932562e022_warriar_Confucius__",
-        "a0a6f50c88c3_PBR_wooden_log_benc",
-        "88f238c656ee_Magic_Car__3d_asset",
-        "f5057f913162_DnD_D20_dice__3d_as",
-        "78d2efe1fee2_Buddha_says__life_i",
-        "daf74742b72d_Confucius_in_skippi",
-        "ec4597bf60c2_monopoly_board_game",
-        "fb51ae56e7e9_a_mythical_battle_a",
-        "cdfce05ea695_DnD_D20_dice__3d_as",
-        "a9820209ff3a_DnD_D20_dice__3d_as",
-        "3fcdf48ef103_Hawai_i__Pizza__3d_",
-        "5148c9aae9c5_iPhone__3d_asset_0_",
-        "2669d99ed6ce_Nitendo_N64__3d_ass",
-        "eec3f4a482be_Orange__3d_asset_0_",
-        "fda175092db4_Guan_Yu_riding_a_mo",
-        "318a74c4cb04_Garena_Game_Jam__3d"
-    };
+    //public void CreateModel()
+    //{
+    //    //var obj = Instantiate(Resources.Load(ModelName[0]) as GameObject);
+    //    Instantiate(Resources.Load($"3DModel/{ModelName[Random.Range(0,ModelName.Length)]}"));
+    //}
+    //private readonly string[] ModelName = new string[] {
+    //    "2ac71a665dc6_fried_chicken__3d_a",
+    //    "0d24902d7ab2_monopoly_board_game",
+    //    "fdc084038d2c_Taiwan__3d_asset_0_",
+    //    "f9702fff9384_gun__3d_asset_0_glb",
+    //    "99932562e022_warriar_Confucius__",
+    //    "a0a6f50c88c3_PBR_wooden_log_benc",
+    //    "88f238c656ee_Magic_Car__3d_asset",
+    //    "f5057f913162_DnD_D20_dice__3d_as",
+    //    "78d2efe1fee2_Buddha_says__life_i",
+    //    "daf74742b72d_Confucius_in_skippi",
+    //    "ec4597bf60c2_monopoly_board_game",
+    //    "fb51ae56e7e9_a_mythical_battle_a",
+    //    "cdfce05ea695_DnD_D20_dice__3d_as",
+    //    "a9820209ff3a_DnD_D20_dice__3d_as",
+    //    "3fcdf48ef103_Hawai_i__Pizza__3d_",
+    //    "5148c9aae9c5_iPhone__3d_asset_0_",
+    //    "2669d99ed6ce_Nitendo_N64__3d_ass",
+    //    "eec3f4a482be_Orange__3d_asset_0_",
+    //    "fda175092db4_Guan_Yu_riding_a_mo",
+    //    "318a74c4cb04_Garena_Game_Jam__3d"
+    //};
 
     #endregion
 
