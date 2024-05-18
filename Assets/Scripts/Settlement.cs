@@ -1,29 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Settlement : MonoBehaviour
 {
     [SerializeField] PartCollector p1;
     [SerializeField] PartCollector p2;
+    [SerializeField] TextMeshProUGUI resultTxt;
 
     public void Run()
     {
         var count1 = p1.GetParts().Count;
         var count2 = p2.GetParts().Count;
 
+        string result = string.Empty;
+
         if (count1 > count2)
         {
-            Debug.Log("P1 win");
+            result = "P1¿Ú≥”!";
         }
         else if (count1 < count2)
         {
-            Debug.Log("P2 win");
+            result = "P2¿Ú≥”!";
         }
         else
         {
-            Debug.Log("Tie");
+            result = "P2¿Ú≥”!";
         }
+        resultTxt.text = result;
+        gameObject.SetActive(true);
     }
 
 }
