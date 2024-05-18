@@ -57,10 +57,20 @@ public class BattleManager : MonoBehaviour
 
     private IEnumerator endFlow()
     {
+        float stopTime = 0;
+
         do
         {
+            if(players[0].velocity.magnitude > .1f)
+            {
+                stopTime = 0;
+            }
+            else
+            {
+                stopTime += Time.deltaTime;
+            }
             yield return null;
-        }while (players[0].velocity.magnitude > .1f);
+        }while (stopTime < 1f);
         //Debug.Log("End");
         EndEvent?.Invoke();
     }
