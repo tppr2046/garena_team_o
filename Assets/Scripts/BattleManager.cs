@@ -9,6 +9,7 @@ public class BattleManager : MonoBehaviour
 
     [SerializeField] private List<Rigidbody> players = new();
     [SerializeField] private List<Transform> startPoints = new();
+    [SerializeField] private float speed = 5;
 
     public void Run()
     {
@@ -29,9 +30,11 @@ public class BattleManager : MonoBehaviour
             rate += Time.deltaTime * 10;
             var vector = players[0].transform.position - players[1].transform.position;
             vector.Normalize();
-            vector *= rate;
-            players[1].AddForce(vector);
-            players[0].AddForce(-vector);
+            //vector *= rate;
+            //players[1].AddForce(vector);
+            //players[0].AddForce(-vector);
+            players[1].velocity = vector * speed;
+            players[0].velocity = -vector * speed;
             yield return null;
         } while (true);
     }
