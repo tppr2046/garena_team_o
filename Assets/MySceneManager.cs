@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MySceneManager : MonoBehaviour
+public class MySceneManager
 {
 //遊戲流程
 //1.主選單
@@ -17,6 +17,26 @@ public class MySceneManager : MonoBehaviour
         FightScene,
         ResultScene,
     }
+    public SceneStep sceneStep;
+    public Animator sceneFSM;
 
+    public void SetScene(int sceneNum)
+    {
+        sceneStep = (SceneStep)sceneNum;
+        sceneFSM.SetTrigger(sceneStep.ToString());
+        //EnterScene();
+    }
+    public void EnterScene()
+    {
+
+    }
+    public void StayScene()
+    {
+
+    }
+    public void ExitScene()
+    {
+
+    }
 
 }
