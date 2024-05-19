@@ -26,16 +26,22 @@ public class TetrisManager : MonoBehaviour
     public Text stopwatchDisplay;
     // Start is called before the first frame update
     public CrashEvent crashEvent;
-    bool isTimeUp = false;
-    private void OnEnable()
+    bool isTimeUp = false;    
+
+    public void RunTetrisInstantiate()
     {
-        InvokeRepeating("TetrisInstantiate", 0, tertrisTime);
+        StartCoroutine(runTetrisInstantiate());
     }
-    
-    //void Start()
-    //{
-    //    InvokeRepeating("TetrisInstantiate",0, tertrisTime);
-    //}
+
+    private IEnumerator runTetrisInstantiate()
+    {
+        do
+        {
+            TetrisInstantiate();
+            yield return new WaitForSeconds(tertrisTime);
+        } while (true);
+    }
+
     void TetrisInstantiate()
     {
         float playeronePosX=Random.Range(Xmin, Xmax);

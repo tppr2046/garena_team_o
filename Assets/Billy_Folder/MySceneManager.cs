@@ -70,6 +70,7 @@ public class MySceneManager : MonoBehaviour
         setUIPanel(1);
         sceneStep = SceneStep.CRAFT;
         tetrisManager.enabled = true;
+        tetrisManager.RunTetrisInstantiate();
     }
 
     public void ToFightScene()//設置在TetrisManager，時間到的時候
