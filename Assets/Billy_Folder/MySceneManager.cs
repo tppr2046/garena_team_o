@@ -67,6 +67,11 @@ public class MySceneManager : MonoBehaviour
     }
     public void ToCraftScene()//設置在MenuScene的Button上
     {
+        StartCoroutine(DoCraftScene());
+    }
+    IEnumerator DoCraftScene()
+    {
+        yield return new WaitForSeconds(3f);
         setUIPanel(1);
         sceneStep = SceneStep.CRAFT;
         tetrisManager.enabled = true;
