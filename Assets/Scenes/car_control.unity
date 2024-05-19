@@ -640,6 +640,37 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 571186508}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &95691997
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 95691998}
+  m_Layer: 10
+  m_Name: ppos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &95691998
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 95691997}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 2.59}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1672666898}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &111591796
 GameObject:
   m_ObjectHideFlags: 0
@@ -4111,6 +4142,7 @@ MonoBehaviour:
   resultScript: {fileID: 2105135691}
   virtualCamera: {fileID: 1920108198}
   bombFX: {fileID: 9157105887711914197, guid: c4f829cb7dd4b864caf8832ec5b1ee55, type: 3}
+  bornPos: {fileID: 95691998}
 --- !u!95 &1645972617
 Animator:
   serializedVersion: 5
@@ -6824,7 +6856,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 8738963647546554663, guid: 84f218bacac4b9b4993882a9cae07508,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 95691998}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 84f218bacac4b9b4993882a9cae07508, type: 3}
 --- !u!54 &6989473499444622482 stripped

@@ -43,6 +43,7 @@ public class MySceneManager : MonoBehaviour
     public Settlement resultScript;//ResultStep的控制腳本
     public CinemachineVirtualCamera virtualCamera;
     public GameObject bombFX;
+    public Transform bornPos;
     
 
     private void Awake()
@@ -156,7 +157,7 @@ public class MySceneManager : MonoBehaviour
     }
     void playBomb()
     {
-        Instantiate(bombFX);
+        Instantiate(bombFX,bornPos);
     }
 
     #region 模型檔名
