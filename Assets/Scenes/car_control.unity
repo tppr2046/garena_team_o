@@ -2456,7 +2456,7 @@ Transform:
   m_GameObject: {fileID: 719818964}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -80.1, y: 0, z: 18.2}
+  m_LocalPosition: {x: -55, y: 0, z: 18.2}
   m_LocalScale: {x: 1, y: 90, z: 120}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3761,7 +3761,7 @@ Transform:
   m_GameObject: {fileID: 1297602178}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 91.5, y: 0, z: 18.2}
+  m_LocalPosition: {x: 55, y: 0, z: 18.2}
   m_LocalScale: {x: 1, y: 90, z: 120}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3802,10 +3802,10 @@ MonoBehaviour:
   m_Targets:
   - target: {fileID: 1672666898}
     weight: 1
-    radius: 0
+    radius: 2
   - target: {fileID: 1670987431}
     weight: 1
-    radius: 0
+    radius: 2
 --- !u!4 &1341965832
 Transform:
   m_ObjectHideFlags: 0
@@ -3815,7 +3815,7 @@ Transform:
   m_GameObject: {fileID: 1341965830}
   serializedVersion: 2
   m_LocalRotation: {x: 0.032119885, y: -0, z: -0, w: 0.99948406}
-  m_LocalPosition: {x: -0.36999944, y: 2.5, z: 0}
+  m_LocalPosition: {x: 0.604074, y: 2.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3829,30 +3829,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1962635815}
     m_Modifications:
-    - target: {fileID: 1557114925957765066, guid: 84f218bacac4b9b4993882a9cae07508,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3460637294708328445, guid: 84f218bacac4b9b4993882a9cae07508,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3460637294708328445, guid: 84f218bacac4b9b4993882a9cae07508,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.7
-      objectReference: {fileID: 0}
     - target: {fileID: 5533027726424560627, guid: 84f218bacac4b9b4993882a9cae07508,
         type: 3}
       propertyPath: m_Name
       value: truck 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7765548881574650064, guid: 84f218bacac4b9b4993882a9cae07508,
-        type: 3}
-      propertyPath: m_Constraints
-      value: 96
       objectReference: {fileID: 0}
     - target: {fileID: 8738963647546554663, guid: 84f218bacac4b9b4993882a9cae07508,
         type: 3}
@@ -6731,45 +6711,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 490223738}
     m_Modifications:
-    - target: {fileID: 1557114925957765066, guid: 84f218bacac4b9b4993882a9cae07508,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2553226713132313353, guid: 84f218bacac4b9b4993882a9cae07508,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2553226713132313353, guid: 84f218bacac4b9b4993882a9cae07508,
-        type: 3}
-      propertyPath: m_Size.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3460637294708328445, guid: 84f218bacac4b9b4993882a9cae07508,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3460637294708328445, guid: 84f218bacac4b9b4993882a9cae07508,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.7
-      objectReference: {fileID: 0}
     - target: {fileID: 5533027726424560627, guid: 84f218bacac4b9b4993882a9cae07508,
         type: 3}
       propertyPath: m_Name
       value: truck 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5652768201982714169, guid: 84f218bacac4b9b4993882a9cae07508,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7765548881574650064, guid: 84f218bacac4b9b4993882a9cae07508,
-        type: 3}
-      propertyPath: m_Constraints
-      value: 96
       objectReference: {fileID: 0}
     - target: {fileID: 8738963647546554663, guid: 84f218bacac4b9b4993882a9cae07508,
         type: 3}
