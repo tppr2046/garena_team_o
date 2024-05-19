@@ -3066,8 +3066,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   players:
-  - {fileID: 6989473499444622482}
   - {fileID: 1429448623}
+  - {fileID: 6989473499444622482}
   startPoints:
   - {fileID: 1887936108}
   - {fileID: 394503492}
@@ -5312,26 +5312,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2358375718855070463, guid: b04bfffc493ffb14c9340dbfebcabf40,
-        type: 3}
-      propertyPath: m_fontSize
-      value: 98.82
-      objectReference: {fileID: 0}
-    - target: {fileID: 2358375718855070463, guid: b04bfffc493ffb14c9340dbfebcabf40,
-        type: 3}
-      propertyPath: m_fontSizeBase
-      value: 98.82
-      objectReference: {fileID: 0}
-    - target: {fileID: 2358375718855070463, guid: b04bfffc493ffb14c9340dbfebcabf40,
-        type: 3}
-      propertyPath: m_VerticalAlignment
-      value: 512
-      objectReference: {fileID: 0}
-    - target: {fileID: 2358375718855070463, guid: b04bfffc493ffb14c9340dbfebcabf40,
-        type: 3}
-      propertyPath: m_HorizontalAlignment
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 7767114058819671140, guid: b04bfffc493ffb14c9340dbfebcabf40,
         type: 3}
       propertyPath: m_SizeDelta.x
@@ -5351,16 +5331,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8266113649637546347, guid: b04bfffc493ffb14c9340dbfebcabf40,
-        type: 3}
-      propertyPath: p1
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8266113649637546347, guid: b04bfffc493ffb14c9340dbfebcabf40,
-        type: 3}
-      propertyPath: p2
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
