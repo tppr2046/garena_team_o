@@ -12,7 +12,7 @@ public class TextObject : MonoBehaviour
         if (other.tag== targetTag)
         {
             Debug.Log("other");
-            other.transform.SetParent(transform);
+            other.transform.SetParent(transform.parent);
             other.GetComponent<Rigidbody>().isKinematic = true;
         }
     }

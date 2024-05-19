@@ -17,15 +17,14 @@ public class PartCollector : MonoBehaviour
         {
             parts.Add(other.gameObject);
             AddPartEvent?.Invoke(other.gameObject);
-            //other.transform.SetParent(transform);
         }
     }
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.tag.Equals(Tags.Part))
-        {
-            parts.Remove(other.gameObject);
-        }
-    }
+    //private void OnTriggerExit(Collider other)
+    //{
+    //    if (other.tag.Equals(Tags.Part))
+    //    {
+    //        parts.Remove(other.gameObject);
+    //    }
+    //}
 }

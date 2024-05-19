@@ -49,7 +49,8 @@ public class BattleManager : MonoBehaviour
         {
             foreach(var go in pc.GetParts())
             {
-                go.transform.parent = null;
+                if(go == null) { continue; }
+                go.transform.SetParent(null);
                 go.GetComponent<Rigidbody>().isKinematic = false;
             }
         }
