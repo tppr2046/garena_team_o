@@ -1158,7 +1158,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &289664619
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1704,7 +1704,7 @@ MonoBehaviour:
   - {fileID: 6751704865572716295, guid: 57fe2bbb4a30e4f569400fb686d7481e, type: 3}
   - {fileID: 8468342268057424367, guid: d294dba48ccfa411791e49404733b96b, type: 3}
   - {fileID: 8912386369057455663, guid: 2d56a0440a2ec4b7dbb56ddfad0e0a1f, type: 3}
-  timeLimit: 30
+  timeLimit: 1
   textObjs:
   - {fileID: 6989473499444622483}
   - {fileID: 1429448624}
@@ -4110,6 +4110,7 @@ MonoBehaviour:
   battleManager: {fileID: 966493710}
   resultScript: {fileID: 2105135691}
   virtualCamera: {fileID: 1920108198}
+  bombFX: {fileID: 9157105887711914197, guid: c4f829cb7dd4b864caf8832ec5b1ee55, type: 3}
 --- !u!95 &1645972617
 Animator:
   serializedVersion: 5
