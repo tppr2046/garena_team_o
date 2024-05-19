@@ -76,9 +76,10 @@ public class MySceneManager : MonoBehaviour
     {
         setUIPanel();
         sceneStep = SceneStep.FIGHT;
-        tetrisManager.enabled = false;
+        
         tetrisManager.crashEvent.CRASH();//打開牆壁
         virtualCamera.enabled = true;
+        tetrisManager.enabled = false;
         battleManager.Run();
         //StartCoroutine(DoFightScene());
     }
