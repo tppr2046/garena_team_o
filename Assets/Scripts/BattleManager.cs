@@ -61,7 +61,7 @@ public class BattleManager : MonoBehaviour
     private IEnumerator endFlow()
     {
         float stopTime = 0;
-
+        float overTime = 0;
         do
         {
             if(players[0].velocity.magnitude > .1f)
@@ -72,8 +72,9 @@ public class BattleManager : MonoBehaviour
             {
                 stopTime += Time.deltaTime;
             }
+            overTime += Time.deltaTime;
             yield return null;
-        }while (stopTime < 1f);
+        }while (stopTime < 1f && overTime < 5f);
         //Debug.Log("End");
         EndEvent?.Invoke(players[0].GetComponentInChildren<PartCollector>(), players[1].GetComponentInChildren<PartCollector>());
     }
