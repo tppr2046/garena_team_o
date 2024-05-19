@@ -42,7 +42,9 @@ public class MySceneManager : MonoBehaviour
     public BattleManager battleManager;//FightStep的控制腳本
     public Settlement resultScript;//ResultStep的控制腳本
     public CinemachineVirtualCamera virtualCamera;
+    public GameObject bombFX;
     
+
     private void Awake()
     {
         instance = this;
@@ -51,6 +53,7 @@ public class MySceneManager : MonoBehaviour
             GameState.Add(i, State.IDLE);
         }
         tetrisManager.enabled = false;
+        FindObjectOfType<PlayerHitChecker>().HitPlayerEvent += playBomb;
     }
     private void Start()
     {
@@ -150,6 +153,10 @@ public class MySceneManager : MonoBehaviour
     {
         mAudioBGM.clip = Resources.Load<AudioClip>(audioName);
         mAudioBGM.Play();
+    }
+    void playBomb()
+    {
+        Instantiate(bombFX);
     }
 
     #region 模型檔名
