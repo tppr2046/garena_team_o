@@ -18105,7 +18105,7 @@ GameObject:
   - component: {fileID: 2773086834046225571}
   m_Layer: 10
   m_Name: Attractor1
-  m_TagString: Part
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
