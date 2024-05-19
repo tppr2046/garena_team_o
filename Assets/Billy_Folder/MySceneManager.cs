@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -39,6 +40,7 @@ public class MySceneManager : MonoBehaviour
     public TetrisManager tetrisManager;//CraftStep的控制腳本
     public BattleManager battleManager;//FightStep的控制腳本
     public Settlement resultScript;//ResultStep的控制腳本
+    public CinemachineVirtualCamera virtualCamera;
     
     private void Awake()
     {
@@ -76,6 +78,7 @@ public class MySceneManager : MonoBehaviour
         sceneStep = SceneStep.FIGHT;
         tetrisManager.enabled = false;
         tetrisManager.crashEvent.CRASH();//打開牆壁
+        virtualCamera.enabled = true;
         battleManager.Run();
         //StartCoroutine(DoFightScene());
     }
