@@ -81,6 +81,7 @@ public class MySceneManager : MonoBehaviour
         tetrisManager.crashEvent.CRASH();//打開牆壁
         virtualCamera.enabled = true;
         tetrisManager.enabled = false;
+        battleManager.EndEvent += ToResultScene;
         battleManager.Run();
         //StartCoroutine(DoFightScene());
     }

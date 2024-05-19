@@ -14,8 +14,6 @@ public class BattleManager : MonoBehaviour
 
     public void Run()
     {
-
-        EndEvent += MySceneManager.instance.ToResultScene;
         for (int i = 0; i < players.Count ; i++)
         {
             players[i].transform.position = startPoints[i].position;
