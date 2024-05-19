@@ -77,7 +77,12 @@ public class MySceneManager : MonoBehaviour
     {
         setUIPanel();
         sceneStep = SceneStep.FIGHT;
-        
+
+        var tos = GameObject.FindObjectsOfType<TextObject>();
+        foreach(var to in tos) { Destroy(to.gameObject); }
+        var pcs = GameObject.FindObjectsOfType<PartCollector>();
+        foreach (var pc in pcs) { pc.GetComponent<Collider>().enabled = false; }
+
         tetrisManager.crashEvent.CRASH();//打開牆壁
         virtualCamera.enabled = true;
         tetrisManager.enabled = false;
