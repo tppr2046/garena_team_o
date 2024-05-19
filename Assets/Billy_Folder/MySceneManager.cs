@@ -135,6 +135,10 @@ public class MySceneManager : MonoBehaviour
         //{
         //    CreateModel();
         //}
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("car_control");
+        }
     }
     public void playAudio(string audioName)
     {
