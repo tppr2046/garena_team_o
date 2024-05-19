@@ -78,6 +78,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: fda175092db4_Guan_Yu_riding_a_mo
       objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: acc67cd1f56604f23bc71f425dcf6003,
+        type: 3}
+      propertyPath: m_TagString
+      value: Part
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

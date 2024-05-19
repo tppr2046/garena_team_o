@@ -78,6 +78,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: cdfce05ea695_DnD_D20_dice__3d_as
       objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 1e823ba46e3cd482b9c58ad8d763b41a,
+        type: 3}
+      propertyPath: m_TagString
+      value: Part
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

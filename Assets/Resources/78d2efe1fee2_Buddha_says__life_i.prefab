@@ -78,6 +78,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: 78d2efe1fee2_Buddha_says__life_i
       objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: acb33ba3bfd6840a48b956ec80971063,
+        type: 3}
+      propertyPath: m_TagString
+      value: Part
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

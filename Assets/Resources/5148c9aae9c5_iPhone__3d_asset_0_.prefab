@@ -78,6 +78,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: 5148c9aae9c5_iPhone__3d_asset_0_
       objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 30f0ae731d39447768f73ddf75863774,
+        type: 3}
+      propertyPath: m_TagString
+      value: Part
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

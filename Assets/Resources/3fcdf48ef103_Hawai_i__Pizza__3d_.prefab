@@ -78,6 +78,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: 3fcdf48ef103_Hawai_i__Pizza__3d_
       objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 070183451ca27440586fc724c68c9e65,
+        type: 3}
+      propertyPath: m_TagString
+      value: Part
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

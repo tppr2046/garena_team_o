@@ -78,6 +78,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: fdc084038d2c_Taiwan__3d_asset_0_
       objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: b782bbaff2f8b4c0e8832ad114e24ac0,
+        type: 3}
+      propertyPath: m_TagString
+      value: Part
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
