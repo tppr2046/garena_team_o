@@ -1704,7 +1704,7 @@ MonoBehaviour:
   - {fileID: 6751704865572716295, guid: 57fe2bbb4a30e4f569400fb686d7481e, type: 3}
   - {fileID: 8468342268057424367, guid: d294dba48ccfa411791e49404733b96b, type: 3}
   - {fileID: 8912386369057455663, guid: 2d56a0440a2ec4b7dbb56ddfad0e0a1f, type: 3}
-  timeLimit: 1
+  timeLimit: 30
   textObjs:
   - {fileID: 6989473499444622483}
   - {fileID: 1429448624}
