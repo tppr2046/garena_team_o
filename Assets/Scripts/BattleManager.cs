@@ -43,6 +43,7 @@ public class BattleManager : MonoBehaviour
     private void onPlayerHit()
     {
         //Debug.Log("onPlayerHit");
+        FindObjectOfType<PlayerHitChecker>().HitPlayerEvent -= onPlayerHit;
         StopAllCoroutines();
         var collectors = GameObject.FindObjectsOfType<PartCollector>();
         foreach(var pc in collectors)
