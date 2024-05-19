@@ -37,6 +37,7 @@ public class MySceneManager : MonoBehaviour
     public GameObject[] UIPanels;
     public static MySceneManager instance;//單例
     public AudioSource mAudio;//可使用的Audio
+    public AudioSource mAudioBGM;//可使用的Audio
     public TetrisManager tetrisManager;//CraftStep的控制腳本
     public BattleManager battleManager;//FightStep的控制腳本
     public Settlement resultScript;//ResultStep的控制腳本
@@ -71,7 +72,7 @@ public class MySceneManager : MonoBehaviour
     }
     IEnumerator DoCraftScene()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
         setUIPanel(1);
         sceneStep = SceneStep.CRAFT;
         tetrisManager.enabled = true;
@@ -100,6 +101,7 @@ public class MySceneManager : MonoBehaviour
         setUIPanel(2);
         sceneStep = SceneStep.RESULT;
         resultScript.Run(part1, part2);
+        playAudioBGM("BattleEndMusic");
     }
     void setUIPanel(int num = -1)
     {
@@ -143,6 +145,11 @@ public class MySceneManager : MonoBehaviour
     public void playAudio(string audioName)
     {
         mAudio.PlayOneShot(Resources.Load<AudioClip>(audioName));
+    }
+    public void playAudioBGM(string audioName)
+    {
+        mAudioBGM.clip = Resources.Load<AudioClip>(audioName);
+        mAudioBGM.Play();
     }
 
     #region 模型檔名
